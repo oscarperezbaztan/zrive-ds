@@ -18,7 +18,7 @@ def list_objects_in_s3_directory(bucket_name, directory_path):
             print(obj['Key'])
 
     except NoCredentialsError:
-        print("Credenciales no disponibles. Asegúrate de configurar las variables de entorno AWS_ACCESS_KEY_ID y AWS_SECRET_ACCESS_KEY.")
+        print("Credentials not available. Make sure to set the environment variables AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.")
 
 
 def download_data_from_s3(bucket_name, bucket_path, save_path):
@@ -32,10 +32,10 @@ def download_data_from_s3(bucket_name, bucket_path, save_path):
 
         s3.download_file(bucket_name, bucket_path, save_path)
 
-        print(f"Archivo descargado y guardado en: {save_path}")
+        print(f"File downloaded and saved in: {save_path}")
 
     except NoCredentialsError:
-        print("Credenciales no disponibles. Asegúrate de configurar las variables de entorno AWS_ACCESS_KEY_ID y AWS_SECRET_ACCESS_KEY.")
+        print("Credentials not available. Make sure to set the environment variables AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY.")
 
 
 #list_objects_in_s3_directory('zrive-ds-data', 'groceries/box_builder_dataset/')
