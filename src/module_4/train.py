@@ -11,6 +11,7 @@ from sklearn.base import BaseEstimator
 import datetime
 import joblib
 import xgboost as xgb 
+import json
 
 logger = logging.getLogger(__name__)
 logger.level = logging.INFO
@@ -97,7 +98,7 @@ def XGBoost_model_selection(df: pd.DataFrame) -> None:
             best_params = {'learning_rate': learning_rate}
 
     logger.info(f"Training best model with learning_rate = {best_params['learning_rate']} over whole dataset")
-    best_model = xgboost = xgb.XGBClassifier(
+    best_model = xgb.XGBClassifier(
         learning_rate =best_params['learning_rate'],
         max_depth=5,
         n_estimators = 100,
@@ -115,6 +116,7 @@ def XGBoost_model_selection(df: pd.DataFrame) -> None:
     best_model.fit(X, y)
 
     save_model(best_model, f"XGBoost_{best_params['learning_rate']}")
+
 
 def main():
     data = preprocess_data_manually()
